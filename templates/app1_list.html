@@ -1,3 +1,11 @@
-hola, visita la App1 <a href='{% url "App1:home" %}'> App1 aquí</a>
+Vista principal <a href='{% url "App1:home" %}'>Home</a>
+<br>
+{% for post  in posts %} <!--de esta forma listamos los modelos que se tienen--> 
+
+<a href='{% url "App1:detail" post.id %}'>{{post.title}}</a> <!--post.id es el parametro que se esta entregando a urls.py para ser mostrado como ruta-->
+<a href='{% url "App1:update" post.id %}'>Update</a>
+<a href='{% url "App1:delete" post.id %}'>Delete</a>
+{% endfor %}
+
 <br>
 <a href='{% url "App1:create" %}'>Create</a> <!--así creamos una forma de acceder al template app1_create.html-->

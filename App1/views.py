@@ -1,12 +1,16 @@
-from django.shortcuts import render, redirect 
-from django.views.generic import View
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import View, UpdateView, DeleteView
 from .forms import PostCreateForm
 from .models import *
+from django.urls import reverse_lazy
 
 class App1ListView(View):
     def get(self,request,*args, **kwargs):
-        context={
+        posts=Post.objects.all() #se llaman a todos los objetos del modelo
 
+
+        context={
+            'posts':posts #primero va el nombre al cual se hace referencia en el html y luego la variable que contiene la info.
     }
         return render(request, 'app1_list.html', context)
     
@@ -40,4 +44,25 @@ class App1CreateView(View):
             
         }
         return render(request, 'app1_create.html', context)
+    
+class App1DetailView(View):
+    def get(self,request,pk, *args,**kwargs): #esta vez incluimos el pk(id) especifica y unica de la instancia creada para hacer uso de el.
+        post= get_object_or_404(Post, pk=pk)# de esta forma pedimos el pk correspondiente a la instancia.
+        context={
+            'post':post
+        }
+        return render(request, 'app1_detail.html', context)
 
+class App1UpdateView(UpdateView):
+    model=Post #se le pasa el modelo que vamos a editar.
+    fields=['title','content']
+    template_name='app1_update.html'
+
+    def get_success_url(self): #esta parte del codigo recupera el pk para utilizarlo en la url detail
+        pk=self.kwargs['pk'] 
+        return reverse_lazy("App1:detail", kwargs={'pk':pk})
+
+class App1DeleteView(DeleteView):
+    model=Post
+    template_name='app1_delete.html'
+    success_url= reverse_lazy('App1:home')
