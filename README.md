@@ -1,10 +1,11 @@
 # PlaygroundFinalProject-Merino
 Proyecto final CoderHouse (Pagina Web)
 
-##Super usuario
-    nombre: adminhms
-    mail:harold@harold.com
-    contraseña:1234asdf1234
+## Super Usuario
+
+ nombre: adminhms
+ mail:harold@harold.com
+ contraseña:1234asdf1234
 
 ## Ejecución
 1. Para la ejecución del proyecto, tipear ***python manage.py runserver***, y luego dirigirse a su navegador.
