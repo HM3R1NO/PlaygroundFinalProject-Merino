@@ -8,6 +8,7 @@ from ckeditor.fields import RichTextField
     - descripcion: str
     - link: str
     - avatar: file
+    __str__: Muestra el usuario por el nombre en la vista de administrador. 
 '''
 class UserExtension(models.Model):
 
@@ -15,6 +16,9 @@ class UserExtension(models.Model):
     descripcion = models.CharField(max_length=255, null=True)
     link        = models.URLField(max_length=100, null=True)
     avatar      = models.ImageField(upload_to='avatares/', null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username 
 
 '''
     MODELO 'Chat':
