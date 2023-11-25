@@ -3,9 +3,9 @@ Proyecto final CoderHouse (Pagina Web)
 
 ## Super Usuario
 
- nombre: adminhms
- mail:harold@harold.com
- contraseña:1234asdf1234
+1. nombre: adminhms
+2. mail:harold@harold.com
+3. contraseña:1234asdf1234
 
 ## Ejecución
 1. Para la ejecución del proyecto, tipear ***python manage.py runserver***, y luego dirigirse a su navegador.
